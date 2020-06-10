@@ -1,0 +1,27 @@
+div {
+  background-color: #1fcacabd;
+  cursor: pointer;
+  width: 53px;
+  height: 53px;
+
+  color:  #103f3f;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 10px;
+  box-shadow: 0px 0px 4px 0px  #013131;
+}
+
+div:hover {
+ background-color: #1fa7a7;
+}
+
+div:active {
+  background-color: #7febf3;
+}
+
+.chosen {
+  background-color: #7febf3;
+}

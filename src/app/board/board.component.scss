@@ -1,0 +1,23 @@
+div {
+  display: grid;
+  width: 600px;
+  height: 600px;
+
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  justify-content: center;
+  padding-top: 15px;
+
+  border: 3px solid rgb(8, 85, 92);
+  border-radius: 10px;
+  box-shadow: 0px 0px 23px 0px rgb(2, 33, 36);
+
+  grid-template-columns: 53px 53px 53px 53px 53px 53px 53px 53px 53px 53px;
+  grid-template-rows: 53px 53px 53px 53px 53px 53px 53px 53px 53px 53px;
+  gap: 6px;
+}

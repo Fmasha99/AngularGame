@@ -1,11 +1,33 @@
 import { Injectable } from '@angular/core';
-import { BoardComponent } from './board/board.component';
-import { CellComponent } from './board/cell/cell.component';
+import { Cell } from '../app/board/board.component';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class MainLogicService {
 
-  constructor() { }
+  public arrayOfCells: Cell[][];
+  counterValue: number;
+
+  getInitialArray() {
+    this.arrayOfCells = [];
+    const arrayLength = 10;
+    for (let i = 0; i < arrayLength; i++) {
+      this.arrayOfCells[i] = [];
+      for (let j = 0; j < arrayLength; j++) {
+        const cell: Cell = {x: i, y: j, counterValue: null };
+        this.arrayOfCells[i][j] = cell;
+      }
+    }
+    return this.arrayOfCells;
+  }
+
+  increment() {
+    this.counterValue++;
+  }
+
+  constructor() {
+    this.counterValue = 0;
+  }
 }

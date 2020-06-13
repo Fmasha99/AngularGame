@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Cell } from '../board.component';
 import { MainLogicService } from 'src/app/main-logic.service';
 
@@ -8,13 +8,13 @@ import { MainLogicService } from 'src/app/main-logic.service';
   templateUrl: './cell.component.html',
   styleUrls: ['./cell.component.scss']
 })
-export class CellComponent implements OnInit {
+export class CellComponent {
 
-  @Input() arrayOfCells: Cell;
+  @Input() serialNumber: number;
+  @Input() x: number;
+  @Input() y: number;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  // tslint:disable-next-line:no-shadowed-variable
+  constructor() {
   }
-
 }

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MainLogicService } from 'src/app/main-logic.service';
+import { MainLogicService } from '../main-logic.service';
 
 export interface Cell {
-  serialNumber?: string;
-  id: number;
+  x: number;
+  y: number;
+  counterValue?: number;
 }
 
 @Component({
@@ -14,11 +15,18 @@ export interface Cell {
 
 export class BoardComponent implements OnInit {
 
-  cells: Cell[] = [];
+  cells: Cell[][];
 
-  constructor() {
-    for (let i = 0; i < 100; i++) {
-      this.cells.push({id: i});
+  // tslint:disable-next-line:no-shadowed-variable
+  constructor(public mainLogicService: MainLogicService) {
+    this.cells = mainLogicService.getInitialArray();
+  }
+
+  onCellClick(x: number, y: number) {
+    const selectedCell = this.cells[x][y];
+    if (selectedCell.counterValue === null) {
+      this.mainLogicService.increment();
+      selectedCell.counterValue = this.mainLogicService.counterValue;
     }
   }
 

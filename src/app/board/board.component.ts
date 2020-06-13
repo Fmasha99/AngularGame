@@ -4,6 +4,7 @@ import { MainLogicService } from '../main-logic.service';
 export interface Cell {
   x: number;
   y: number;
+  isActive: boolean;
   counterValue?: number;
 }
 
@@ -27,6 +28,8 @@ export class BoardComponent implements OnInit {
     if (selectedCell.counterValue === null) {
       this.mainLogicService.increment();
       selectedCell.counterValue = this.mainLogicService.counterValue;
+      const nextCells = this.mainLogicService.findCoordinates(x, y);
+      nextCells.forEach((cell) => this.cells[cell.x][cell.y].isActive = true);
     }
   }
 

@@ -11,6 +11,7 @@ import { MainLogicService } from 'src/app/main-logic.service';
 export class CellComponent {
 
   @Input() serialNumber: number;
+  @Input() isActive: boolean;
   @Input() x: number;
   @Input() y: number;
 

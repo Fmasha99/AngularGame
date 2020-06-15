@@ -16,6 +16,6 @@ export class CellComponent {
   @Input() y: number;
 
   // tslint:disable-next-line:no-shadowed-variable
-  constructor() {
+  constructor(public mainLogicService: MainLogicService) {
   }
 }

@@ -1,1 +1,1 @@
-<div [style.backgroundColor]="isActive ? '#7febf3' : '#1fcacabd'">{{serialNumber}}</div>
+<div #chosenCell [style.backgroundColor]="mainLogicService.changeBackgroundColor(x, y)">{{serialNumber}}</div>

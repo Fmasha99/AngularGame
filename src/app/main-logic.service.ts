@@ -8,8 +8,9 @@ import { CellComponent } from './board/cell/cell.component';
 
 export class MainLogicService {
 
-  public arrayOfCells: Cell[][];
-  counterValue: number;
+  private arrayOfCells: Cell[][];
+  private counterValue: number;
+  private activeCells: Cell[] = [];
 
   getInitialArray() {
     this.arrayOfCells = [];
@@ -26,46 +27,71 @@ export class MainLogicService {
 
   onCellClick(x: number, y: number) {
     const selectedCell = this.arrayOfCells[x][y];
+    this.deletePreviousSteps(x, y);
     if (selectedCell.counterValue === null) {
       this.increment();
       selectedCell.counterValue = this.counterValue;
-      const nextCells = this.findCoordinates(x, y);
-      nextCells.forEach((cell) => this.arrayOfCells[cell.x][cell.y].isActive = true);
+      this.showNextSteps(x, y);
     }
+  }
+
+  showNextSteps(x: number, y: number) {
+    this.activeCells = this.findCoordinates(x, y);
+    this.activeCells.forEach((cell) => this.arrayOfCells[cell.x][cell.y].isActive = true);
+  }
+
+  deletePreviousSteps(x: number, y: number) {
+    this.activeCells.forEach((cell) => this.arrayOfCells[cell.x][cell.y].isActive = false);
   }
 
   findCoordinates(x: number, y: number) {
     const result: Cell[] = [];
     if (y - 2 >= 0) {
       if (x - 1 >= 0) {
-        result.push({x: x - 1, y: y - 2, counterValue: null});
+        if (this.arrayOfCells[x - 1][y - 2].counterValue === null) {
+          result.push({x: x - 1, y: y - 2, counterValue: null});
+        }
       }
       if (x + 1 < 10) {
-        result.push({x: x + 1, y: y - 2, counterValue: null});
+        if (this.arrayOfCells[x + 1][y - 2].counterValue === null) {
+          result.push({x: x + 1, y: y - 2, counterValue: null});
+        }
       }
     }
     if (x + 2 < 10) {
       if (y - 1 >= 0) {
-        result.push({x: x + 2, y: y - 1, counterValue: null});
+        if (this.arrayOfCells[x + 2][y - 1].counterValue === null) {
+          result.push({x: x + 2, y: y - 1, counterValue: null});
+        }
       }
       if (y + 1 < 10) {
-        result.push({x: x + 2, y: y + 1, counterValue: null});
+        if (this.arrayOfCells[x + 2][y + 1].counterValue === null) {
+          result.push({x: x + 2, y: y + 1, counterValue: null});
+        }
       }
     }
     if (x - 2 >= 0) {
       if (y - 1 >= 0) {
-        result.push({x: x - 2, y: y - 1, counterValue: null});
+        if (this.arrayOfCells[x - 2][y - 1].counterValue === null) {
+          result.push({x: x - 2, y: y - 1, counterValue: null});
+        }
       }
       if (y + 1 < 10) {
-        result.push({x: x - 2, y: y + 1, counterValue: null});
+        if (this.arrayOfCells[x - 2][y + 1].counterValue === null) {
+          result.push({x: x - 2, y: y + 1, counterValue: null});
+        }
       }
     }
     if (y + 2 < 10) {
       if (x - 1 >= 0) {
-        result.push({x: x - 1, y: y + 2, counterValue: null});
+        if (this.arrayOfCells[x - 1][y + 2].counterValue === null) {
+          result.push({x: x - 1, y: y + 2, counterValue: null});
+        }
       }
       if (x + 1 < 10) {
-        result.push({x: x + 1, y: y + 2, counterValue: null});
+        if (this.arrayOfCells[x + 1][y + 2].counterValue === null) {
+          result.push({x: x + 1, y: y + 2, counterValue: null});
+        }
       }
     }
     return result;
@@ -73,6 +99,18 @@ export class MainLogicService {
 
   increment() {
     this.counterValue++;
+  }
+
+  changeBackgroundColor(x: number, y: number) {
+    if (this.arrayOfCells[x][y].counterValue != null) {
+      return '#16a0a0';
+    }
+    else if (this.arrayOfCells[x][y].isActive === true) {
+      return '#7febf3';
+    }
+    else {
+      return '#1fcacabd';
+    }
   }
 
   constructor() {

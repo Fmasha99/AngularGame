@@ -4,8 +4,8 @@ import { MainLogicService } from '../main-logic.service';
 export interface Cell {
   x: number;
   y: number;
-  isActive: boolean;
-  counterValue?: number;
+  isActive?: boolean;
+  counterValue: number;
 }
 
 @Component({
@@ -23,15 +23,15 @@ export class BoardComponent implements OnInit {
     this.cells = mainLogicService.getInitialArray();
   }
 
-  onCellClick(x: number, y: number) {
-    const selectedCell = this.cells[x][y];
-    if (selectedCell.counterValue === null) {
-      this.mainLogicService.increment();
-      selectedCell.counterValue = this.mainLogicService.counterValue;
-      const nextCells = this.mainLogicService.findCoordinates(x, y);
-      nextCells.forEach((cell) => this.cells[cell.x][cell.y].isActive = true);
-    }
-  }
+  // onCellClick(x: number, y: number) {
+  //   const selectedCell = this.cells[x][y];
+  //   if (selectedCell.counterValue === null) {
+  //     this.mainLogicService.increment();
+  //     selectedCell.counterValue = this.mainLogicService.counterValue;
+  //     const nextCells = this.mainLogicService.findCoordinates(x, y);
+  //     nextCells.forEach((cell) => this.cells[cell.x][cell.y].isActive = true);
+  //   }
+  // }
 
   ngOnInit(): void {
   }

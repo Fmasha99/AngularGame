@@ -24,6 +24,16 @@ export class MainLogicService {
     return this.arrayOfCells;
   }
 
+  onCellClick(x: number, y: number) {
+    const selectedCell = this.arrayOfCells[x][y];
+    if (selectedCell.counterValue === null) {
+      this.increment();
+      selectedCell.counterValue = this.counterValue;
+      const nextCells = this.findCoordinates(x, y);
+      nextCells.forEach((cell) => this.arrayOfCells[cell.x][cell.y].isActive = true);
+    }
+  }
+
   findCoordinates(x: number, y: number) {
     const result: Cell[] = [];
     if (y - 2 >= 0) {

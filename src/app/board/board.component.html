@@ -1,6 +1,6 @@
 <section>
 <div *ngFor="let row of cells">
   <app-cell *ngFor="let cell of row"
-  [x] = "cell.x" [y] = "cell.y" [serialNumber] = "cell.counterValue" [isActive] = "cell.isActive" (click)='onCellClick(cell.x, cell.y)'></app-cell>
+  [x] = "cell.x" [y] = "cell.y" [serialNumber] = "cell.counterValue" [isActive] = "cell.isActive" (click)='mainLogicService.onCellClick(cell.x, cell.y)'></app-cell>
 </div>
 </section>

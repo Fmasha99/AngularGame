@@ -11,6 +11,7 @@ export class MainLogicService {
   private arrayOfCells: Cell[][];
   private counterValue: number;
   private activeCells: Cell[] = [];
+  public title: string;
 
   getInitialArray() {
     this.arrayOfCells = [];
@@ -32,6 +33,7 @@ export class MainLogicService {
       this.increment();
       selectedCell.counterValue = this.counterValue;
       this.showNextSteps(x, y);
+      this.finishedGame();
     }
   }
 
@@ -110,6 +112,12 @@ export class MainLogicService {
     }
     else {
       return '#1fcacabd';
+    }
+  }
+
+  finishedGame() {
+    if (this.activeCells.length === 0 && this.counterValue != null) {
+      return this.title = 'game over';
     }
   }
 

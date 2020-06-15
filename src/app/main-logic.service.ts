@@ -27,8 +27,8 @@ export class MainLogicService {
 
   onCellClick(x: number, y: number) {
     const selectedCell = this.arrayOfCells[x][y];
-    this.deletePreviousSteps(x, y);
-    if (selectedCell.counterValue === null) {
+    if (selectedCell.counterValue === null && selectedCell.isActive || this.activeCells.length === 0) {
+      this.deletePreviousSteps(x, y);
       this.increment();
       selectedCell.counterValue = this.counterValue;
       this.showNextSteps(x, y);

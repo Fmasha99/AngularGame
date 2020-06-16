@@ -8,7 +8,7 @@ import { Cell } from '../app/board/board.component';
 export class MainLogicService {
 
   private arrayOfCells: Cell[][];
-  private counterValue: number;
+  public counterValue: number;
   private activeCells: Cell[] = [];
   public title = '';
 
@@ -29,11 +29,11 @@ export class MainLogicService {
     const selectedCell = this.arrayOfCells[x][y];
     if (this.title === '') {
       if (selectedCell.counterValue === null && selectedCell.isActive || this.activeCells.length === 0) {
-        this.deletePreviousSteps(x, y);
+        this.deletePreviousSteps();
         this.increment();
         selectedCell.counterValue = this.counterValue;
         this.showNextSteps(x, y);
-        this.finishedGame();
+        this.checkIfGameFinished();
       }
     }
   }
@@ -43,8 +43,9 @@ export class MainLogicService {
     this.activeCells.forEach((cell) => this.arrayOfCells[cell.x][cell.y].isActive = true);
   }
 
-  deletePreviousSteps(x: number, y: number) {
+  deletePreviousSteps() {
     this.activeCells.forEach((cell) => this.arrayOfCells[cell.x][cell.y].isActive = false);
+    this.activeCells = [];
   }
 
   findCoordinates(x: number, y: number) {
@@ -116,9 +117,12 @@ export class MainLogicService {
     }
   }
 
-  finishedGame() {
+  checkIfGameFinished() {
     if (this.activeCells.length === 0 && this.counterValue != null) {
-      return this.title = 'game over';
+      return this.title = 'you lose(';
+    }
+    if (this.counterValue === 100) {
+      return this.title = 'you win!';
     }
   }
 

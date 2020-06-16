@@ -16,13 +16,20 @@ export interface Cell {
 
 export class BoardComponent implements OnInit {
 
-  private cells: Cell[][];
+  public cells: Cell[][];
 
   constructor(public mainLogicService: MainLogicService) {
   }
 
   ngOnInit(): void {
     this.cells = this.mainLogicService.getInitialArray();
+  }
+
+  startNewGame() {
+    this.cells = this.mainLogicService.getInitialArray();
+    this.mainLogicService.deletePreviousSteps();
+    this.mainLogicService.counterValue = 0;
+    this.mainLogicService.title = '';
   }
 
 }

@@ -16,7 +16,7 @@ export interface Cell {
 
 export class BoardComponent implements OnInit {
 
-  cells: Cell[][];
+  private cells: Cell[][];
 
   constructor(public mainLogicService: MainLogicService) {
   }

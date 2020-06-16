@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Cell } from '../app/board/board.component';
-import { CellComponent } from './board/cell/cell.component';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ export class MainLogicService {
   private arrayOfCells: Cell[][];
   private counterValue: number;
   private activeCells: Cell[] = [];
-  public title: string;
+  public title = '';
 
   getInitialArray() {
     this.arrayOfCells = [];
@@ -28,12 +27,14 @@ export class MainLogicService {
 
   onCellClick(x: number, y: number) {
     const selectedCell = this.arrayOfCells[x][y];
-    if (selectedCell.counterValue === null && selectedCell.isActive || this.activeCells.length === 0) {
-      this.deletePreviousSteps(x, y);
-      this.increment();
-      selectedCell.counterValue = this.counterValue;
-      this.showNextSteps(x, y);
-      this.finishedGame();
+    if (this.title === '') {
+      if (selectedCell.counterValue === null && selectedCell.isActive || this.activeCells.length === 0) {
+        this.deletePreviousSteps(x, y);
+        this.increment();
+        selectedCell.counterValue = this.counterValue;
+        this.showNextSteps(x, y);
+        this.finishedGame();
+      }
     }
   }
 

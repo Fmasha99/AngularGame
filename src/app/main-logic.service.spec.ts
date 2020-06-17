@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { MainLogicService } from './main-logic.service';
+import { MainLogicService } from "./main-logic.service";
 
-describe('MainLogicService', () => {
-  let service: MainLogicService;
+describe("MainLogicService", () => {
+	let service: MainLogicService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(MainLogicService);
-  });
+	beforeEach(() => {
+		TestBed.configureTestingModule({});
+		service = TestBed.inject(MainLogicService);
+	});
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
+	it("should be created", () => {
+		expect(service).toBeTruthy();
+	});
 });

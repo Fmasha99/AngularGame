@@ -118,11 +118,10 @@ export class MainLogicService {
 	}
 
 	public checkIfGameFinished() {
-		if (this.activeCells.length === 0 && this.counterValue != null) {
-			return this.title = "you lose(";
-		}
 		if (this.counterValue === 100) {
-			return this.title = "you win!";
+			this.title = "you win!";
+		} else if (this.activeCells.length === 0 && this.counterValue != null) {
+			this.title = "you lose(";
 		}
 	}
 

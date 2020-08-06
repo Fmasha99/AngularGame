@@ -1,10 +1,9 @@
-<div class="boardWindow">
-  <button (click)='startNewGame()'>NEW GAME</button>
-  <section>
-    <div *ngFor="let row of cells">
-      <app-cell *ngFor="let cell of row"
-      [x] = "cell.x" [y] = "cell.y" [serialNumber] = "cell.counterValue" [isActive] = "cell.isActive" (click)='mainLogicService.onCellClick(cell.x, cell.y)'></app-cell>
-    </div>
-  </section>
-  <span> {{ mainLogicService.title }} </span>
-</div>
+<header><button (click)='startNewGame()'>NEW GAME</button></header>
+
+<section>
+	<ng-container *ngFor="let row of cells">
+		<app-cell *ngFor="let cell of row" [x]="cell.x" [y]="cell.y" [serialNumber]="cell.counterValue"
+			[isActive]="cell.isActive" (click)='mainLogicService.onCellClick(cell.x, cell.y)'></app-cell>
+	</ng-container>
+</section>
+<span> {{ mainLogicService.title }} </span>

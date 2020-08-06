@@ -1,73 +1,81 @@
-.boardWindow {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
+:host {
 
-  button {
-    cursor: pointer;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1%;
-    margin-bottom: 1%;
-    padding: 0.5%;
+	display: flex;
+	flex-direction: column;
+	// justify-content: center;
 
-    border: 2px solid rgb(8, 85, 92);
-    border-radius: 10px;
-    box-shadow: 0px 0px 23px 0px rgb(2, 33, 36);
-    background: none;
+	button {
+		cursor: pointer;
+		display: flex;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 1%;
+		margin-bottom: 1%;
+		padding: 0.5%;
 
-    outline: none;
-    font-size: 20px;
-    color: rgb(5, 55, 59);
+		border: 2px solid rgb(8, 85, 92);
+		border-radius: 10px;
+		box-shadow: 0px 0px 23px 0px rgb(2, 33, 36);
+		background: none;
 
-    &:hover {
-      background-color: #1fcaca42;
-    }
+		outline: none;
+		font-size: 20px;
+		color: rgb(5, 55, 59);
 
-    &:active {
-      background-color: #24e0e0bd;
-    }
-  } //button
+		&:hover {
+			background-color: #1fcaca42;
+		}
 
-  section {
-    display: grid;
-    width: 600px;
-		height: 600px;
+		&:active {
+			background-color: #24e0e0bd;
+		}
+	}
 
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+	//button
 
-    justify-content: center;
-    padding-top: 15px;
+	section {
+		display: grid;
+		// width: 600px;
+		// height: 600px;
 
-    border: 3px solid rgb(8, 85, 92);
-    border-radius: 10px;
+		margin: auto;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		justify-content: center;
+		padding-top: 15px;
+
+		border: 3px solid rgb(8, 85, 92);
+		border-radius: 10px;
 		box-shadow: 0px 0px 23px 0px rgb(2, 33, 36);
 
-    grid-template-columns: 53px 53px 53px 53px 53px 53px 53px 53px 53px 53px;
-    grid-template-rows: 53px 53px 53px 53px 53px 53px 53px 53px 53px 53px;
-    gap: 6px;
-  } //section
+		grid-template-columns: 9vw 9vw 9vw 9vw 9vw 9vw 9vw 9vw 9vw 9vw;
+		grid-template-rows: 9vw 9vw 9vw 9vw 9vw 9vw 9vw 9vw 9vw 9vw;
+		// grid-template-columns: 53px 53px 53px 53px 53px 53px 53px 53px 53px 53px;
+		// grid-template-rows: 53px 53px 53px 53px 53px 53px 53px 53px 53px 53px;
+		// gap: 6px;
+	}
 
-  span {
-    position: fixed;
-    text-transform: uppercase;
-    font-size: 100px;
+	//section
 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  } //span
-} //.boardWindow
+	span {
+		position: fixed;
+		text-transform: uppercase;
+		font-size: 100px;
 
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	//span
+}
 
 @media (max-width: 640px) {
-	.boardWindow {
+	:host {
+
 		button {
 			padding: 1%;
 			margin-top: 5%;
@@ -78,17 +86,23 @@
 		}
 
 		section {
-			width: 95vw;
-			height: 80vh;
+			// width: 95vw;
+			// height: 80vh;
 
 			border: none;
 			box-shadow: none;
 
-			grid-template-columns: 8% 8% 8% 8% 8% 8% 8% 8% 8% 8%;
-			grid-template-rows: 8% 8% 8% 8% 8% 8% 8% 8% 8% 8%;
-			gap: 6px;
-		} //section
-	} //.boardWindow
+			grid-template-columns: repeat(10, 8.5vw);
+			grid-template-rows: repeat(10, 8.5vw);
+			gap: 1vw;
+		}
+
+
+	}
+
+	//section
+
+
 }
 
-
+//:host

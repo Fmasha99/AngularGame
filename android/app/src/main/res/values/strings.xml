@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Horse Puzzle</string>
+    <string name="title_activity_main">Horse Puzzle</string>
+    <string name="package_name">by.softclub.horsepuzzle</string>
+    <string name="custom_url_scheme">by.softclub.horsepuzzle</string>
+</resources>

@@ -1,5 +1,7 @@
-<header><button (click)='startNewGame()'>NEW GAME</button></header>
-
+<header>
+	<button class="startNewGame" (click)='startNewGame()'>NEW GAME</button>
+	<button class="rules"><img src="/assets/question.svg" alt=""></button>
+</header>
 <section>
 	<ng-container *ngFor="let row of cells">
 		<app-cell *ngFor="let cell of row" [x]="cell.x" [y]="cell.y" [serialNumber]="cell.counterValue"

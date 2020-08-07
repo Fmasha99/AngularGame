@@ -1,0 +1,13 @@
+{
+  "appId": "by.softclub.horsepuzzle",
+  "appName": "Horse Puzzle",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist/angularGame",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

@@ -4,32 +4,53 @@
 	flex-direction: column;
 	// justify-content: center;
 
-	button {
-		cursor: pointer;
+	header {
 		display: flex;
-		margin-left: auto;
-		margin-right: auto;
-		margin-top: 1%;
-		margin-bottom: 1%;
-		padding: 0.5%;
+		align-items: center;
+		margin-top: 5%;
 
-		border: 2px solid rgb(8, 85, 92);
-		border-radius: 10px;
-		box-shadow: 0px 0px 23px 0px rgb(2, 33, 36);
-		background: none;
+		.startNewGame {
+			cursor: pointer;
+			display: flex;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 1%;
+			margin-bottom: 1%;
+			padding: 0.5%;
 
-		outline: none;
-		font-size: 20px;
-		color: rgb(5, 55, 59);
+			border: 2px solid rgb(8, 85, 92);
+			border-radius: 10px;
+			box-shadow: 0px 0px 23px 0px rgb(2, 33, 36);
+			background: none;
 
-		&:hover {
-			background-color: #1fcaca42;
+			outline: none;
+			font-size: 20px;
+			color: rgb(5, 55, 59);
+
+			&:hover {
+				background-color: #1fcaca42;
+			}
+
+			&:active {
+				background-color: #24e0e0bd;
+			}
 		}
 
-		&:active {
-			background-color: #24e0e0bd;
+		.rules {
+			background: none;
+			border: none;
+
+			border-radius: 10px;
+			box-shadow: 0px 0px 4px 0px #013131;
+			padding: 1%;
+			margin-right: 3%;
+
+			img {
+				width: 70%;
+			}
 		}
 	}
+
 
 	//button
 
@@ -76,13 +97,14 @@
 @media (max-width: 640px) {
 	:host {
 
-		button {
-			padding: 1%;
-			margin-top: 5%;
-			margin-bottom: 5%;
+		header {
+			.startNewGame {
+				padding: 1%;
+				margin-top: 5%;
+				margin-bottom: 5%;
 
-			border-color: black;
-			background-color: rgba(255, 255, 0, 0.849);
+				border-color: black;
+			}
 		}
 
 		section {

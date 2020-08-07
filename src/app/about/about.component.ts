@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { Router } from "@angular/router";
+import { MainLogicService } from "../main-logic.service";
 
 @Component({
 	selector: "app-about",
@@ -7,9 +7,5 @@ import { Router } from "@angular/router";
 	styleUrls: ["./about.component.scss"],
 })
 export class AboutComponent {
-	public constructor(public route: Router) {}
-
-	public routeToHomePage() {
-		this.route.navigate([""]);
-	}
+	public constructor(public mainLogicService: MainLogicService) {}
 }

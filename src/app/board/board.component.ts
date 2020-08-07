@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
 import { MainLogicService } from "../main-logic.service";
 
 export interface Cell {
@@ -17,10 +16,7 @@ export interface Cell {
 export class BoardComponent implements OnInit {
 	public cells: Cell[][];
 
-	public constructor(
-		public mainLogicService: MainLogicService,
-		public route: Router
-	) {}
+	public constructor(public mainLogicService: MainLogicService) {}
 
 	public ngOnInit(): void {
 		this.cells = this.mainLogicService.getInitialArray();
@@ -31,9 +27,5 @@ export class BoardComponent implements OnInit {
 		this.mainLogicService.deletePreviousSteps();
 		this.mainLogicService.counterValue = 0;
 		this.mainLogicService.title = "";
-	}
-
-	public routeToAboutPage() {
-		this.route.navigate(["./about"]);
 	}
 }

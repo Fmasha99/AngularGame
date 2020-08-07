@@ -1,12 +1,15 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
 	selector: "app-about",
 	templateUrl: "./about.component.html",
 	styleUrls: ["./about.component.scss"],
 })
-export class AboutComponent implements OnInit {
-	public constructor() {}
+export class AboutComponent {
+	public constructor(public route: Router) {}
 
-	public ngOnInit(): void {}
+	public routeToHomePage() {
+		this.route.navigate([""]);
+	}
 }

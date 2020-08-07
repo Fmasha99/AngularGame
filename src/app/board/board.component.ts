@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { MainLogicService } from "../main-logic.service";
 
 export interface Cell {
@@ -11,15 +12,15 @@ export interface Cell {
 @Component({
 	selector: "app-board",
 	templateUrl: "./board.component.html",
-	styleUrls: ["./board.component.scss"]
+	styleUrls: ["./board.component.scss"],
 })
-
 export class BoardComponent implements OnInit {
-
 	public cells: Cell[][];
 
-	public constructor(public mainLogicService: MainLogicService) {
-	}
+	public constructor(
+		public mainLogicService: MainLogicService,
+		public route: Router
+	) {}
 
 	public ngOnInit(): void {
 		this.cells = this.mainLogicService.getInitialArray();
@@ -32,4 +33,7 @@ export class BoardComponent implements OnInit {
 		this.mainLogicService.title = "";
 	}
 
+	public routeToAboutPage() {
+		this.route.navigate(["./about"]);
+	}
 }

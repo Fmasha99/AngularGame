@@ -129,13 +129,17 @@ export class MainLogicService {
 		}
 	}
 
-	public routeToAboutPage() {
-		this.route.navigate(["./about"]);
-	}
+	// public routeToAboutPage() {
+	// 	this.route.navigate(["./about"]);
+	// }
 
-	public routeToHomePage() {
-		this.route.navigate([""]);
-	}
+	// public routeToGamePage() {
+	// 	this.route.navigate(["./game"]);
+	// }
+
+	// public routeToWeatherPage() {
+	// 	this.route.navigate(["./weather"]);
+	// }
 
 	public constructor(public route: Router) {
 		this.counterValue = 0;

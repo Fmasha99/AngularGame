@@ -1,6 +1,5 @@
 import { Component, HostBinding, Input } from "@angular/core";
-import { MainLogicService } from "src/app/main-logic.service";
-import { Cell } from "../board.component";
+import { MainLogicService } from "src/app/game/main-logic.service";
 
 @Component({
 	selector: "app-cell",

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { MainLogicService } from "../main-logic.service";
+import { MainLogicService } from "../game/main-logic.service";
 
 export interface Cell {
 	x: number;

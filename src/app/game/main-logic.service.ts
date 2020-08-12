@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { Cell } from "../app/board/board.component";
+import { Cell } from "../board/board.component";
 
 @Injectable({
 	providedIn: "root",
@@ -128,18 +128,6 @@ export class MainLogicService {
 			this.title = "you lose(";
 		}
 	}
-
-	// public routeToAboutPage() {
-	// 	this.route.navigate(["./about"]);
-	// }
-
-	// public routeToGamePage() {
-	// 	this.route.navigate(["./game"]);
-	// }
-
-	// public routeToWeatherPage() {
-	// 	this.route.navigate(["./weather"]);
-	// }
 
 	public constructor(public route: Router) {
 		this.counterValue = 0;

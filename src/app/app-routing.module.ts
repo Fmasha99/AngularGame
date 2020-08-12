@@ -7,10 +7,19 @@ import { BoardComponent } from "./board/board.component";
 import { WeatherComponent } from "./weather/weather.component";
 
 const routes: Routes = [
-	{ path: "game", component: BoardComponent },
+	{
+		path: "game",
+		loadChildren: () => import("./game/game.module").then((m) => m.GameModule),
+	},
 	{ path: "about", component: AboutComponent },
 	{ path: "login", component: AuthorizeComponent },
-	{ path: "weather", component: WeatherComponent },
+	{
+		path: "weather",
+		loadChildren: () =>
+			import("./weather-module/weather-module.module").then(
+				(m) => m.WeatherModuleModule
+			),
+	},
 ];
 
 @NgModule({

@@ -1,11 +1,11 @@
 <!-- <app-board></app-board> -->
 <header>
-	<img src="/assets/question.svg">
+	<img src="/assets/question.svg" (click)="showBurgerMenu(true)" />
 </header>
-<!-- <div>
-	<img src="/assets/back.svg">
-	<a routerLink="/game">Game</a>
-	<a routerLink="/about">About</a><br>
-	<a routerLink="/weather">Weather</a>
-</div> -->
+<div *ngIf="isActiveMenu" (appClickOutside)="showBurgerMenu(false)">
+	<img src="/assets/back.svg" (click)="showBurgerMenu(false)" />
+	<a routerLink="/game" (click)="showBurgerMenu(false)">Game</a>
+	<a routerLink="/about" (click)="showBurgerMenu(false)">About</a><br />
+	<a routerLink="/weather" (click)="showBurgerMenu(false)">Weather</a>
+</div>
 <router-outlet></router-outlet>

@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-import { MainLogicService } from "../main-logic.service";
 
 @Component({
 	selector: "app-about",
@@ -7,5 +6,5 @@ import { MainLogicService } from "../main-logic.service";
 	styleUrls: ["./about.component.scss"],
 })
 export class AboutComponent {
-	public constructor(public mainLogicService: MainLogicService) {}
+	public constructor() {}
 }

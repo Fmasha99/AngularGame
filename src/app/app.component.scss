@@ -27,6 +27,10 @@
 			text-transform: uppercase;
 			text-decoration: none;
 			color: black;
+
+			&:active {
+				background-color: cornsilk;
+			}
 		}
 	}
 }

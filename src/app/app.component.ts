@@ -1,5 +1,4 @@
-import { Component } from "@angular/core";
-import { MainLogicService } from "./main-logic.service";
+import { Component, Input, Output } from "@angular/core";
 
 @Component({
 	selector: "app-root",
@@ -7,7 +6,22 @@ import { MainLogicService } from "./main-logic.service";
 	styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
+	public isActiveMenu = false;
 	public title = "angularGame";
+	public activeMenu = false;
 
-	public constructor(public mainLogicService: MainLogicService) {}
+	public constructor() {}
+
+	// tslint:disable-next-line:use-lifecycle-interface
+	public ngDoCheck() {
+		this.isActiveMenu = this.getActiveMenu();
+	}
+
+	public showBurgerMenu(bool) {
+		this.activeMenu = bool;
+	}
+
+	public getActiveMenu() {
+		return this.activeMenu;
+	}
 }

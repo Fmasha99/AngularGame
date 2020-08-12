@@ -2,16 +2,14 @@ import { Component, NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 
 import { AboutComponent } from "./about/about.component";
+import { AppCommonModule } from "./app-common/app-common.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { BoardComponent } from "./board/board.component";
-import { CellComponent } from "./board/cell/cell.component";
-import { AuthorizeComponent } from './authorize/authorize.component';
-import { WeatherComponent } from './weather/weather.component';
+import { AuthorizeComponent } from "./authorize/authorize.component";
 
 @NgModule({
-	declarations: [AppComponent, BoardComponent, CellComponent, AboutComponent, AuthorizeComponent, WeatherComponent],
-	imports: [BrowserModule, AppRoutingModule],
+	declarations: [AppComponent, AboutComponent, AuthorizeComponent],
+	imports: [BrowserModule, AppRoutingModule, AppCommonModule],
 	providers: [],
 	bootstrap: [AppComponent],
 })

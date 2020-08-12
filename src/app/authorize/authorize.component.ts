@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-authorize',
-  templateUrl: './authorize.component.html',
-  styleUrls: ['./authorize.component.scss']
+	selector: "app-authorize",
+	templateUrl: "./authorize.component.html",
+	styleUrls: ["./authorize.component.scss"],
 })
 export class AuthorizeComponent implements OnInit {
+	public constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+	public ngOnInit(): void {}
 }

@@ -1,9 +1,10 @@
 <!-- <app-board></app-board> -->
 <header>
-	<img src="/assets/question.svg" (click)="showBurgerMenu(true)" />
+	<img src="/assets/menu.svg" (click)="showBurgerMenu(true)" />
+	<span>Horse Puzzle</span>
 </header>
 <div *ngIf="isActiveMenu" (appClickOutside)="showBurgerMenu(false)">
-	<img src="/assets/back.svg" (click)="showBurgerMenu(false)" />
+	<img src="/assets/menu.svg" (click)="showBurgerMenu(false)" />
 	<a routerLink="/game" (click)="showBurgerMenu(false)">Game</a>
 	<a routerLink="/about" (click)="showBurgerMenu(false)">About</a><br />
 	<a routerLink="/weather" (click)="showBurgerMenu(false)">Weather</a>

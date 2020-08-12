@@ -1,3 +1,75 @@
 :host {
 	overflow-y: scroll;
+	display: flex;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	flex-direction: column;
+
+	input {
+		display: flex;
+		border: none;
+		margin-top: 80px;
+		border-bottom: 1px solid #E8EBEF;
+		padding-bottom: 10px;
+		outline: none;
+		width: 100%;
+
+		//text
+		font-family: Segoe UI;
+		font-weight: 600;
+		font-size: 14px;
+		line-height: 19px;
+		text-align: center;
+		color: #808090;
+	}
+
+	.main-information {
+		display: flex;
+		justify-content: space-between;
+		padding-top: 30px;
+		align-items: center;
+
+		.temperature-today {
+			display: flex;
+			flex-direction: column;
+
+			span {
+				font-family: Segoe UI;
+				font-weight: bold;
+				font-size: 60px;
+
+				color: #040F2E;
+			}
+
+			p {
+				font-family: Segoe UI;
+				font-weight: 600;
+				font-size: 14px;
+				line-height: 19px;
+
+
+				color: #111228;
+			}
+
+			;
+
+		}
+
+		.feelings-today {
+			display: flex;
+			flex-direction: column;
+			justify-self: end;
+
+			span {
+				margin-top: 15px;
+				font-family: Segoe UI;
+				font-size: 12px;
+				line-height: 16px;
+
+				color: #7A7E9D;
+			}
+		}
+	}
+
 }

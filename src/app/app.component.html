@@ -4,9 +4,12 @@
 	<span>Horse Puzzle</span>
 </header>
 <div *ngIf="isActiveMenu" (appClickOutside)="showBurgerMenu(false)">
-	<img src="/assets/menu.svg" (click)="showBurgerMenu(false)" />
+	<header>
+		<img src="/assets/menu.svg" (click)="showBurgerMenu(false)" />
+		<span>Horse Puzzle</span>
+	</header>
 	<a routerLink="/game" (click)="showBurgerMenu(false)">Game</a>
-	<a routerLink="/about" (click)="showBurgerMenu(false)">About</a><br />
+	<a routerLink="/about" (click)="showBurgerMenu(false)">About</a>
 	<a routerLink="/weather" (click)="showBurgerMenu(false)">Weather</a>
 </div>
 <router-outlet></router-outlet>

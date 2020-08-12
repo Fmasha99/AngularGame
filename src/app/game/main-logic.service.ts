@@ -113,11 +113,11 @@ export class MainLogicService {
 
 	public changeBackgroundColor(x: number, y: number) {
 		if (this.arrayOfCells[x][y].counterValue != null) {
-			return "#16a0a0";
+			return "#FFA51A";
 		} else if (this.arrayOfCells[x][y].isActive === true) {
-			return "#7febf3";
+			return "#A5A5A5";
 		} else {
-			return "#1fcacabd";
+			return "#EAEAEA";
 		}
 	}
 

@@ -1,12 +1,16 @@
-<input type="text" placeholder="Беларусь, Минск">
+<input type="text" placeholder="Start typing your location..">
+<section class="geolocation">
+	<span>{{weatherService.getWeather() | async}}</span>
+	<img src="/assets/location.svg" alt="loc">
+</section>
 <section class="main-information">
 	<div class="temperature-today">
 		<span>19°</span>
-		<p>Ясно</p>
+		<p>Clear</p>
 	</div>
 	<div class="feelings-today">
 		<img src="/assets/sun.svg" alt="sun">
-		<span>Ощущается как 21°</span>
+		<span>Feels like 21°</span>
 	</div>
 </section>
 <section class="extension-information">
@@ -20,10 +24,10 @@
 	</div>
 	<div>
 		<img src="/assets/meteorology 1.svg" alt="windiness">
-		14 км/ч
+		14 km/h
 	</div>
 	<div>
-		<img src="/assets/meteorology 1.svg" alt="rain">
+		<img src="/assets/umbrella 1.svg" alt="rain">
 		11%
 	</div>
 	<div>

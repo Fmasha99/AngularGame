@@ -9,7 +9,7 @@
 	input {
 		display: flex;
 		border: none;
-		margin-top: 80px;
+		margin-top: 47px;
 		border-bottom: 1px solid #E8EBEF;
 		padding-bottom: 10px;
 		outline: none;
@@ -24,12 +24,31 @@
 		line-height: 19px;
 		text-align: center;
 		color: #808090;
+
+		&::placeholder {
+			font-weight: 400;
+		}
+	}
+
+	.geolocation {
+		display: flex;
+		margin: 50px auto 30px auto;
+
+		span {
+			font-family: Lato;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 19px;
+			margin-right: 5px;
+
+			color: #808090;
+		}
+
 	}
 
 	.main-information {
 		display: flex;
 		justify-content: space-between;
-		padding-top: 30px;
 		align-items: center;
 
 		.temperature-today {

@@ -1,8 +1,7 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
-@Injectable({
-	providedIn: "root",
-})
+@Injectable()
 export class WeatherService {
 	public lng: number;
 	public lat: number;
@@ -14,12 +13,12 @@ export class WeatherService {
 	public rain: number;
 	public ultraviolet: number;
 	public humidity: number;
-	public weatherAPI = `https://api.darksky.net/forecast/[key]/[latitude],[longitude]`;
+	public weatherAPI = `https://api.darksky.net/forecast/6f30bcb415b8381ae3532266723b9e3a/[latitude],[longitude]`;
 
-	public constructor() {}
+	public constructor(private http: HttpClient) {}
 
 	public getCurrentPosition() {
-		return new Promise((resolve, reject) => {
+		return new Promise<Position>((resolve, reject) => {
 			navigator.geolocation.getCurrentPosition(
 				(position: Position) => {
 					resolve(position);
@@ -33,6 +32,8 @@ export class WeatherService {
 
 	public async getWeather() {
 		const position = await this.getCurrentPosition();
-		console.log(position);
+		const url = `api/forecast/6f30bcb415b8381ae3532266723b9e3a/${position.coords.latitude},${position.coords.longitude}`;
+		const data = await this.http.get(url).toPromise();
+		return data;
 	}
 }

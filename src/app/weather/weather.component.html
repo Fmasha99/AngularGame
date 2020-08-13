@@ -1,16 +1,16 @@
 <input type="text" placeholder="Start typing your location..">
 <section class="geolocation">
-	<span>{{weatherService.getWeather() | async}}</span>
+	<span>{{weatherData.timezone}}</span>
 	<img src="/assets/location.svg" alt="loc">
 </section>
-<section class="main-information">
+<section class="main-information" *ngIf="weatherData">
 	<div class="temperature-today">
-		<span>19°</span>
-		<p>Clear</p>
+		<span>{{(weatherData.currently.temperature -32)*5/9 | number: "1.0-0"}} °</span>
+		<p>{{weatherData.currently.summary}}</p>
 	</div>
 	<div class="feelings-today">
 		<img src="/assets/sun.svg" alt="sun">
-		<span>Feels like 21°</span>
+		<span>Feels like {{(weatherData.currently.apparentTemperature -32)*5/9 | number: "1.0-0"}}°</span>
 	</div>
 </section>
 <section class="extension-information">
@@ -24,7 +24,7 @@
 	</div>
 	<div>
 		<img src="/assets/meteorology 1.svg" alt="windiness">
-		14 km/h
+		{{weatherData.currently.windSpeed}} m/s
 	</div>
 	<div>
 		<img src="/assets/umbrella 1.svg" alt="rain">
@@ -32,10 +32,10 @@
 	</div>
 	<div>
 		<img src="/assets/sunny 1.svg" alt="ultraviolet">
-		UV:3
+		UV:{{weatherData.currently.uvIndex}}
 	</div>
 	<div>
 		<img src="/assets/sky 1.svg" alt="humidity">
-		17%
+		{{weatherData.currently.humidity *100 | number: "1.0-0"}}%
 	</div>
 </section>

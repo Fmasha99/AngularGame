@@ -1,19 +1,20 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { from, Observable, Subject, timer } from "rxjs";
 
 @Injectable()
 export class WeatherService {
-	public lng: number;
-	public lat: number;
-	public temperatureNow: number;
-	public temperatureFeelings: number;
-	public sunRize: number;
-	public sunDown: number;
-	public widness: number;
-	public rain: number;
-	public ultraviolet: number;
-	public humidity: number;
-	public weatherAPI = `https://api.darksky.net/forecast/6f30bcb415b8381ae3532266723b9e3a/[latitude],[longitude]`;
+	// public lng: number;
+	// public lat: number;
+	// public temperatureNow: number;
+	// public temperatureFeelings: number;
+	// public sunRize: number;
+	// public sunDown: number;
+	// public widness: number;
+	// public rain: number;
+	// public ultraviolet: number;
+	// public humidity: number;
+	// public weatherAPI = `https://api.darksky.net/forecast/6f30bcb415b8381ae3532266723b9e3a/[latitude],[longitude]`;
 
 	public constructor(private http: HttpClient) {}
 

@@ -1,51 +1,50 @@
 <input type="text" placeholder="Start typing your location.." />
-<section class="geolocation">
-	<span>{{ weatherData.timezone }}</span>
-	<img src="/assets/location.svg" alt="loc" />
-</section>
-<section class="main-information" *ngIf="weatherData">
-	<div class="temperature-today">
-		<span
-			>{{
-				((weatherData.currently.temperature - 32) * 5) / 9 | number: "1.0-0"
-			}}°</span
-		>
-		<p>{{ weatherData.currently.summary }}</p>
-	</div>
-	<div class="feelings-today">
-		<img src="/assets/sun.svg" alt="sun" />
-		<span
-			>Feels like
-			{{
-				((weatherData.currently.apparentTemperature - 32) * 5) / 9
-					| number: "1.0-0"
-			}}°</span
-		>
-	</div>
-</section>
-<section class="extension-information">
-	<div>
-		<img src="/assets/pressure.svg" alt="sunrise" />
-		{{ weatherData.currently.pressure / 133.32 | number: "1.0-2" }} Pa
-	</div>
-	<div>
-		<img src="/assets/visibility.svg" alt="sunset" />
-		{{ weatherData.currently.visibility }} km
-	</div>
-	<div>
-		<img src="/assets/meteorology 1.svg" alt="windiness" />
-		{{ weatherData.currently.windSpeed }} m/s
-	</div>
-	<div>
-		<img src="/assets/umbrella 1.svg" alt="rain" />
-		{{ weatherData.currently.precipProbability * 100 | number: "1.0-0" }} %
-	</div>
-	<div>
-		<img src="/assets/sunny 1.svg" alt="ultraviolet" />
-		UV:{{ weatherData.currently.uvIndex }}
-	</div>
-	<div>
-		<img src="/assets/sky 1.svg" alt="humidity" />
-		{{ weatherData.currently.humidity * 100 | number: "1.0-0" }} %
-	</div>
-</section>
+<app-cities></app-cities>
+<ng-container *ngIf="weatherData">
+	<section class="geolocation">
+		<span>{{ weatherData.timezone }}</span>
+		<img src="/assets/location.svg" alt="loc" />
+	</section>
+	<section class="main-information">
+		<div class="temperature-today">
+			<span>{{
+					((weatherData.currently.temperature - 32) * 5) / 9 | number: "1.0-0"
+				}}°</span>
+			<p>{{ weatherData.currently.summary }}</p>
+		</div>
+		<div class="feelings-today">
+			<img src="/assets/sun.svg" alt="sun" />
+			<span>Feels like
+				{{
+					((weatherData.currently.apparentTemperature - 32) * 5) / 9
+						| number: "1.0-0"
+				}}°</span>
+		</div>
+	</section>
+	<section class="extension-information">
+		<div>
+			<img src="/assets/pressure.svg" alt="sunrise" />
+			{{ weatherData.currently.pressure / 133.32 | number: "1.0-2" }} Pa
+		</div>
+		<div>
+			<img src="/assets/visibility.svg" alt="sunset" />
+			{{ weatherData.currently.visibility }} km
+		</div>
+		<div>
+			<img src="/assets/meteorology 1.svg" alt="windiness" />
+			{{ weatherData.currently.windSpeed }} m/s
+		</div>
+		<div>
+			<img src="/assets/umbrella 1.svg" alt="rain" />
+			{{ weatherData.currently.precipProbability * 100 | number: "1.0-0" }} %
+		</div>
+		<div>
+			<img src="/assets/sunny 1.svg" alt="ultraviolet" />
+			UV:{{ weatherData.currently.uvIndex }}
+		</div>
+		<div>
+			<img src="/assets/sky 1.svg" alt="humidity" />
+			{{ weatherData.currently.humidity * 100 | number: "1.0-0" }} %
+		</div>
+	</section>
+</ng-container>

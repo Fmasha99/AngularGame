@@ -1,4 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { Subject } from "rxjs";
+import { debounceTime, map, tap } from "rxjs/operators";
+import { CitiesService } from "./cities.service";
 
 export interface City {
 	name: string;
@@ -12,6 +15,18 @@ export interface City {
 	templateUrl: "./cities.component.html",
 	styleUrls: ["./cities.component.scss"],
 })
-export class CitiesComponent {
-	public constructor() {}
+export class CitiesComponent implements OnInit {
+	public city = new Subject<string>();
+
+	public constructor(public citiesService: CitiesService) {}
+
+	public ngOnInit() {
+		this.city
+			.pipe(
+				tap((e) => console.log(e)),
+				map((e) => e.toLocaleUpperCase()),
+				debounceTime(1000)
+			)
+			.subscribe((letter) => console.log(letter));
+	}
 }

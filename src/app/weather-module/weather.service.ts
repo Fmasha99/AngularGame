@@ -33,7 +33,7 @@ export class WeatherService {
 
 	public async getWeather() {
 		const position = await this.getCurrentPosition();
-		const url = `api/forecast/6f30bcb415b8381ae3532266723b9e3a/${position.coords.latitude},${position.coords.longitude}`;
+		const url = `api/darksky/forecast/6f30bcb415b8381ae3532266723b9e3a/${position.coords.latitude},${position.coords.longitude}`;
 		const data = await this.http.get(url).toPromise();
 		return data;
 	}

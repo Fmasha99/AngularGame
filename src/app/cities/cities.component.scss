@@ -1,17 +1,41 @@
 :host {
-	position: fixed;
-	margin-top: 78px;
-	width: 80%;
-	max-height: 160px;
-	overflow-y: scroll;
-}
+	width: 100%;
 
-div {
-	text-align: center;
-	border: 1px solid #F4F4F5;
-	box-shadow: 0px 5px 5px rgba(214, 215, 226, 0.25);
-	border-radius: 0px 0px 4px 4px;
-	background-color: white;
-	color: #7A7E9D;
-	padding: 1%;
+	input {
+		display: flex;
+		border: none;
+		margin-top: 47px;
+		border-bottom: 1px solid #E8EBEF;
+		padding-bottom: 10px;
+		outline: none;
+		width: 95%;
+		height: 20px;
+		margin-left: auto;
+		margin-right: auto;
+
+		//text
+		font-family: Segoe UI;
+		font-weight: 600;
+		font-size: 14px;
+		line-height: 19px;
+		text-align: center;
+		color: #808090;
+
+		&::placeholder {
+			font-weight: 400;
+		}
+	}
+
+
+	div {
+		text-align: center;
+		border: 1px solid #F4F4F5;
+		box-shadow: 0px 5px 5px rgba(214, 215, 226, 0.25);
+		border-radius: 0px 0px 4px 4px;
+		background-color: white;
+		color: #7A7E9D;
+		padding: 1%;
+	}
+
+
 }

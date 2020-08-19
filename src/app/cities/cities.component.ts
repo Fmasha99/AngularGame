@@ -1,6 +1,6 @@
-import { Component, OnInit } from "@angular/core";
-import { Subject } from "rxjs";
-import { debounceTime, map, tap } from "rxjs/operators";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Subject, Subscription } from "rxjs";
+import { debounceTime, filter, map, switchMap, tap } from "rxjs/operators";
 import { CitiesService } from "./cities.service";
 
 export interface City {
@@ -15,18 +15,24 @@ export interface City {
 	templateUrl: "./cities.component.html",
 	styleUrls: ["./cities.component.scss"],
 })
-export class CitiesComponent implements OnInit {
+export class CitiesComponent implements OnInit, OnDestroy {
 	public city = new Subject<string>();
+	private citySubscription: Subscription;
+	public cities?: { description: string; id: string }[];
 
-	public constructor(public citiesService: CitiesService) {}
+	public constructor(public citiesService: CitiesService) { }
 
 	public ngOnInit() {
-		this.city
-			.pipe(
-				tap((e) => console.log(e)),
-				map((e) => e.toLocaleUpperCase()),
-				debounceTime(1000)
-			)
-			.subscribe((letter) => console.log(letter));
+		this.citySubscription = this.city.pipe(
+			filter(e => e.length > 1),
+			debounceTime(10),
+			switchMap(e => this.citiesService.queryCities(e))
+		).subscribe(e => {
+			this.cities = e;
+		});
+	}
+
+	public ngOnDestroy() {
+		this.citySubscription.unsubscribe();
 	}
 }

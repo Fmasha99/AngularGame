@@ -1,5 +1,6 @@
 :host {
 	width: 100%;
+	position: relative;
 
 	input {
 		display: flex;
@@ -27,14 +28,20 @@
 	}
 
 
-	div {
+	ul {
+		position: absolute;
 		text-align: center;
-		border: 1px solid #F4F4F5;
-		box-shadow: 0px 5px 5px rgba(214, 215, 226, 0.25);
 		border-radius: 0px 0px 4px 4px;
-		background-color: white;
-		color: #7A7E9D;
-		padding: 1%;
+		width: 100%;
+
+		li {
+			list-style-type: none;
+			border: 1px solid #F4F4F5;
+			box-shadow: 0px 5px 5px rgba(214, 215, 226, 0.25);
+			background-color: white;
+			color: #7A7E9D;
+			padding: 1%;
+		}
 	}
 
 

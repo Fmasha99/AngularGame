@@ -10,6 +10,7 @@ const googlePlacesDetailsUrl = "api/googleMap/maps/api/place/details/json";
 export class CitiesService {
 	public constructor(private http: HttpClient) {
 		// this.queryCities("orlando").subscribe((e) => console.log(e));
+		// this.getLocationById("ChIJ02oeW9PP20YR2XC13VO4YQs").subscribe((e) => console.log(e));
 	}
 
 	public queryCities(query: string) {
@@ -22,6 +23,21 @@ export class CitiesService {
 					e.predictions.map(el => ({
 						description: el.description,
 						id: el.place_id,
+					}))
+				)
+			);
+	}
+
+	public getLocationById(placeId: string) {
+		return this.http
+			.get<any>(googlePlacesDetailsUrl, {
+				params: { key: googleApiKey, place_id: placeId }
+			})
+			.pipe(
+				map(e =>
+					e.result.geometry.location.map(el => ({
+						lat: el.lat,
+						lng: el.lng,
 					}))
 				)
 			);

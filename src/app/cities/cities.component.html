@@ -1,8 +1,6 @@
-<input type="text" placeholder="Start typing your location.." (input)="city.next($event.target.value)" />
+<input type="text" placeholder="Start typing your location.." (input)="queryCity.next($event.target.value)" />
 <ng-container *ngIf="cities">
-	<ul *ngFor="let city of cities; let i = index">
-		<li>{{cities[i].description}}</li>
-
-
+	<ul>
+		<li *ngFor="let city of cities" (click)="locality.next(city)">{{city.description}}</li>
 	</ul>
 </ng-container>

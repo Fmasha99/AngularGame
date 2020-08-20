@@ -1,10 +1,12 @@
 :host {
 	overflow-y: scroll;
 	display: flex;
+	flex: 1 0;
 	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
 	flex-direction: column;
+
 
 	input {
 		display: flex;

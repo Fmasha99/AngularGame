@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { from, Observable, Subject, timer } from "rxjs";
+import { CityCoordinates } from "./domain";
 
 @Injectable()
 export class WeatherService {
@@ -16,7 +16,7 @@ export class WeatherService {
 	// public humidity: number;
 	// public weatherAPI = `https://api.darksky.net/forecast/6f30bcb415b8381ae3532266723b9e3a/[latitude],[longitude]`;
 
-	public constructor(private http: HttpClient) {}
+	public constructor(private http: HttpClient) { }
 
 	public getCurrentPosition() {
 		return new Promise<Position>((resolve, reject) => {
@@ -36,5 +36,10 @@ export class WeatherService {
 		const url = `api/darksky/forecast/6f30bcb415b8381ae3532266723b9e3a/${position.coords.latitude},${position.coords.longitude}`;
 		const data = await this.http.get(url).toPromise();
 		return data;
+	}
+
+	public getWeatherByCoordinates(coords: CityCoordinates) {
+		const url = `api/darksky/forecast/6f30bcb415b8381ae3532266723b9e3a/${coords.lat},${coords.lng}`;
+		return this.http.get(url);
 	}
 }

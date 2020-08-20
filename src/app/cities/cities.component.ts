@@ -1,15 +1,15 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from "@angular/core";
+import { ChangeDetectorRef, Component, EventEmitter, OnDestroy, OnInit, Output } from "@angular/core";
 import { Subject, Subscription } from "rxjs";
-import { debounceTime, filter, map, switchMap, tap } from "rxjs/operators";
+import { debounceTime, filter, switchMap } from "rxjs/operators";
 import { WeatherService } from "../weather-module/weather.service";
 import { CitiesService } from "./cities.service";
 
-export interface City {
-	name: string;
-	id: number;
-	lat?: number;
-	lng?: number;
-}
+// export interface City {
+// 	name: string;
+// 	id: number;
+// 	lat?: number;
+// 	lng?: number;
+// }
 
 @Component({
 	selector: "app-cities",
@@ -17,16 +17,18 @@ export interface City {
 	styleUrls: ["./cities.component.scss"],
 })
 export class CitiesComponent implements OnInit, OnDestroy {
+	@Output() public sendCoordinates = new EventEmitter<any>();
+
 	public queryCity = new Subject<string>();
 	public locality = new Subject<string>();
-	public coordinates?: { lat: number; lng: number };
 	private citySubscription: Subscription;
 	private idSubscription: Subscription;
 	public cities?: { description: string; id: string }[];
 
 	public constructor(public citiesService: CitiesService,
 		public weatherService: WeatherService,
-		public cdr: ChangeDetectorRef) { }
+		public cdr: ChangeDetectorRef) {
+	}
 
 	public ngOnInit() {
 		this.citySubscription = this.queryCity.pipe(
@@ -40,10 +42,8 @@ export class CitiesComponent implements OnInit, OnDestroy {
 		this.idSubscription = this.locality.pipe(
 			switchMap(e => this.citiesService.getLocationById(e))
 		).subscribe(e => {
-			this.coordinates = e;
-			console.log(this.coordinates);
+			this.sendCoordinates.emit(e);
 		});
-
 	}
 
 	public ngOnDestroy() {
@@ -51,4 +51,8 @@ export class CitiesComponent implements OnInit, OnDestroy {
 		this.idSubscription.unsubscribe();
 	}
 
+	public onSelect(id: string) {
+		this.locality.next(id);
+		this.cities = undefined;
+	}
 }

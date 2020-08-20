@@ -1,5 +1,5 @@
 <!-- <input type="text" placeholder="Start typing your location.." /> -->
-<app-cities></app-cities>
+<app-cities (sendCoordinates)="getCityCoordinates.next($event)"></app-cities>
 <ng-container *ngIf="weatherData">
 	<section class="geolocation">
 		<span>{{ weatherData.timezone }}</span>

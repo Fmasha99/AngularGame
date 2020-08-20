@@ -9,8 +9,6 @@ const googlePlacesDetailsUrl = "api/googleMap/maps/api/place/details/json";
 @Injectable()
 export class CitiesService {
 	public constructor(private http: HttpClient) {
-		// this.queryCities("orlando").subscribe((e) => console.log(e));
-		// this.getLocationById("ChIJ02oeW9PP20YR2XC13VO4YQs").subscribe((e) => console.log(e));
 	}
 
 	public queryCities(query: string) {

@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from "@angular/core";
 import { Subject, Subscription } from "rxjs";
 import { debounceTime, filter, map, switchMap, tap } from "rxjs/operators";
+import { WeatherService } from "../weather-module/weather.service";
 import { CitiesService } from "./cities.service";
 
 export interface City {
@@ -18,12 +19,13 @@ export interface City {
 export class CitiesComponent implements OnInit, OnDestroy {
 	public queryCity = new Subject<string>();
 	public locality = new Subject<string>();
+	public coordinates?: { lat: number; lng: number };
 	private citySubscription: Subscription;
 	private idSubscription: Subscription;
 	public cities?: { description: string; id: string }[];
-	public placeId: string;
 
 	public constructor(public citiesService: CitiesService,
+		public weatherService: WeatherService,
 		public cdr: ChangeDetectorRef) { }
 
 	public ngOnInit() {
@@ -35,10 +37,13 @@ export class CitiesComponent implements OnInit, OnDestroy {
 			this.cities = e;
 			this.cdr.detectChanges();
 		});
-		this.idSubscription = this.locality.subscribe((e: any) => {
-			this.placeId = e.id;
-			console.log(this.placeId);
-		})
+		this.idSubscription = this.locality.pipe(
+			switchMap(e => this.citiesService.getLocationById(e))
+		).subscribe(e => {
+			this.coordinates = e;
+			console.log(this.coordinates);
+		});
+
 	}
 
 	public ngOnDestroy() {

@@ -34,11 +34,14 @@ export class CitiesService {
 				params: { key: googleApiKey, place_id: placeId }
 			})
 			.pipe(
-				map(e =>
-					e.result.geometry.location.map(el => ({
-						lat: el.lat,
-						lng: el.lng,
-					}))
+				map(e => ({
+					lat: e.result.geometry.location.lat,
+					lng: e.result.geometry.location.lng,
+				})
+					// e.result.geometry.location.map(el => ({
+					// 	lat: el.lat,
+					// 	lng: el.lng,
+					// }))
 				)
 			);
 	}

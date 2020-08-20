@@ -2,6 +2,7 @@ import {
 	ChangeDetectionStrategy,
 	ChangeDetectorRef,
 	Component,
+	Input,
 	OnInit,
 } from "@angular/core";
 import { Subject } from "rxjs";
@@ -13,10 +14,11 @@ import { WeatherService } from "../weather-module/weather.service";
 	selector: "app-weather",
 	templateUrl: "./weather.component.html",
 	styleUrls: ["./weather.component.scss"],
-	// changeDetection: ChangeDetectionStrategy.OnPush,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WeatherComponent implements OnInit {
-	public weatherData?: Record<string, any>;
+	public chosenPositionweatherData?: Record<string, any>;
+	public currentPositionWeatherData?: Record<string, any>;
 	public getCityCoordinates = new Subject<CityCoordinates>();
 
 	public constructor(
@@ -25,13 +27,17 @@ export class WeatherComponent implements OnInit {
 	) { }
 
 	public async ngOnInit() {
-		// this.weatherData = await this.weatherService.getWeather();
+		this.currentPositionWeatherData = await this.weatherService.getWeather();
 		this.getCityCoordinates.pipe(
 			switchMap(e => this.weatherService.getWeatherByCoordinates(e))
 		).subscribe(e => {
-			console.log(e);
-			this.weatherData = e;
+			this.chosenPositionweatherData = e;
+			this.cdr.detectChanges();
 		})
 		this.cdr.detectChanges();
+	}
+
+	public get weatherData() {
+		return this.chosenPositionweatherData ?? this.currentPositionWeatherData;
 	}
 }

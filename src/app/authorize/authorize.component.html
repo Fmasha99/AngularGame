@@ -24,6 +24,12 @@
 				Incorrect password.
 				Should contain uppercase letter and number.
 			</div>
+			<div *ngIf="password.errors.minlength">
+				Password is too short.
+			</div>
+			<div *ngIf="password.errors.maxlength">
+				Password is too long.
+			</div>
 		</div>
 		<button type="submit">Open game</button>
 

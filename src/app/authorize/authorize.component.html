@@ -1,9 +1,31 @@
-<span>Please, enter your login and password</span>
+<form [formGroup]="playerForm">
 
-<input type="text">
-<input type="text">
+	<section>
+		<p>Login</p>
+		<input id="login" value="Player" name="login" formControlName="login" type="text" title="Login" minlength="6"
+			placeholder="Enter your login" autocomplete="off">
+		<div class="error" *ngIf="login.invalid && login.dirty && login.touched">
+			<div *ngIf="login.errors.required">
+				This field is required.
+			</div>
+			<div *ngIf="login.errors.pattern">
+				Incorrect nickname.
+			</div>
+		</div>
 
-<span>Choose your city</span>
-<input type="text">
+		<p>Password</p>
+		<input id="password" value=" " name="password" formControlName="password" type="text" title="password"
+			placeholder="Enter your password">
+		<div class="error" *ngIf="password.invalid && password.dirty && password.touched">
+			<div *ngIf="password.errors.required">
+				This field is required.
+			</div>
+			<div *ngIf="password.errors.pattern">
+				Incorrect password.
+				Should contain uppercase letter and number.
+			</div>
+		</div>
+		<button type="submit">Open game</button>
 
-<input type="submit" value="submit">
+	</section>
+</form>

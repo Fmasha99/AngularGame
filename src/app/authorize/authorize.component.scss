@@ -1,9 +1,76 @@
-:host {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+form {
 
-	input {
-		width: 60vw;
+	section {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+		margin-top: 35%;
+
+		p {
+			font-family: Lato;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			line-height: 26px;
+			letter-spacing: -0.3px;
+			color: #000000;
+			margin-top: 5%;
+		}
+
+		input {
+			display: flex;
+			width: 200px;
+			margin: 2% auto 3% auto;
+			text-align: center;
+
+			border: none;
+			border-bottom: 1px solid #E8EBEF;
+			outline: none;
+
+			font-family: Segoe UI;
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 19px;
+
+			color: #808090;
+
+			&:-webkit-autofill {
+				background: none;
+			}
+		}
+
+		button {
+			display: flex;
+			margin-right: auto;
+			margin-left: auto;
+			margin-top: 10%;
+			justify-content: center;
+			align-items: center;
+			width: 150px;
+			padding: 1%;
+
+			background-color: #459bfe;
+			border: none;
+			border-radius: 4px;
+
+			// font-family: Segoe UI;
+			font-family: Lato;
+			font-weight: 400;
+			font-size: 18px;
+			color: white;
+
+			&:disabled {
+				background-color: #459bfe7e;
+				color: #808090;
+			}
+		}
+
+		.error {
+			font-family: Segoe UI;
+			font-weight: 400;
+			font-size: 14px;
+			color: red;
+		}
 	}
 }

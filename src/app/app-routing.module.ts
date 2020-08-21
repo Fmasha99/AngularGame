@@ -3,8 +3,6 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { AboutComponent } from "./about/about.component";
 import { AuthorizeComponent } from "./authorize/authorize.component";
-import { BoardComponent } from "./board/board.component";
-import { WeatherComponent } from "./weather/weather.component";
 
 const routes: Routes = [
 	{
@@ -26,4 +24,4 @@ const routes: Routes = [
 	imports: [RouterModule.forRoot(routes)],
 	exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -21,7 +21,7 @@ export class AuthorizeComponent {
 			],
 			password: [null, [
 				Validators.required,
-				Validators.pattern(/^[a-zA-Z0-9]+$ && [A-Z] && [0-9]/),
+				Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/),
 				Validators.minLength(4),
 				Validators.maxLength(8)]
 			]

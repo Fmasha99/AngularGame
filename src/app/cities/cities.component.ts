@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, EventEmitter, OnDestroy, OnInit, Output } from "@angular/core";
-import { Subject, Subscription } from "rxjs";
+import { Observable, of, Subject, Subscription } from "rxjs";
 import { debounceTime, filter, switchMap } from "rxjs/operators";
 import { WeatherService } from "../weather-module/weather.service";
 import { CitiesService } from "./cities.service";
@@ -32,11 +32,12 @@ export class CitiesComponent implements OnInit, OnDestroy {
 
 	public ngOnInit() {
 		this.citySubscription = this.queryCity.pipe(
-			filter(e => e.length > 1),
+			// filter(symbols => symbols.length > 1),
 			debounceTime(300),
-			switchMap(e => this.citiesService.queryCities(e))
-		).subscribe(e => {
-			this.cities = e;
+			switchMap(symbols => symbols.length > 1 ? this.citiesService.queryCities(symbols) : of([]))
+		).subscribe(cities => {
+			console.log(cities);
+			this.cities = cities;
 			this.cdr.detectChanges();
 		});
 		this.idSubscription = this.locality.pipe(

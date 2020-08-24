@@ -7,8 +7,8 @@ import {
 } from "@angular/core";
 import { Subject } from "rxjs";
 import { switchMap } from "rxjs/operators";
-import { CityCoordinates } from "../weather-module/domain";
-import { WeatherService } from "../weather-module/weather.service";
+import { CityCoordinates } from "../domain";
+import { WeatherService } from "../weather.service";
 
 @Component({
 	selector: "app-weather",

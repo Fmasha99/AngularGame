@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { Cell } from "../board/board.component";
+import { Cell } from "../game/board/board.component";
 
 @Injectable({
 	providedIn: "root",

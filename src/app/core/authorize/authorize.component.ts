@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { StateService } from "../core/state.service";
+import { StateService } from "../state.service";
 
 export interface AuthorizeForm {
 	log: string;

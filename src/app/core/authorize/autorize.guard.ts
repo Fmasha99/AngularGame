@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from "@angular/router";
-import { StateService } from "../core/state.service";
+import { StateService } from "../state.service";
 import { AuthorizeForm } from "./authorize.component";
 
 @Injectable()

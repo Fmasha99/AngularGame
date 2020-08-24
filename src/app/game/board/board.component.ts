@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { MainLogicService } from "../game/main-logic.service";
+import { MainLogicService } from "../main-logic.service";
 
 export interface Cell {
 	x: number;
@@ -16,7 +16,7 @@ export interface Cell {
 export class BoardComponent implements OnInit {
 	public cells: Cell[][];
 
-	public constructor(public mainLogicService: MainLogicService) {}
+	public constructor(public mainLogicService: MainLogicService) { }
 
 	public ngOnInit(): void {
 		this.cells = this.mainLogicService.getInitialArray();

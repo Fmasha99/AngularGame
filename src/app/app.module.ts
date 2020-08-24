@@ -6,8 +6,8 @@ import { AboutComponent } from "./about/about.component";
 import { AppCommonModule } from "./app-common/app-common.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { AuthorizeComponent } from "./authorize/authorize.component";
-import { AutorizeGuard } from "./authorize/autorize.guard";
+import { AuthorizeComponent } from "./core/authorize/authorize.component";
+import { AutorizeGuard } from "./core/authorize/autorize.guard";
 import { CoreModule } from "./core/core.module";
 
 @NgModule({

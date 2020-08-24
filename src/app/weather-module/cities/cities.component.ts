@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, OnDestroy, OnInit, Output } from "@angular/core";
 import { Observable, of, Subject, Subscription } from "rxjs";
 import { debounceTime, filter, switchMap } from "rxjs/operators";
-import { WeatherService } from "../weather-module/weather.service";
+import { WeatherService } from "../weather.service";
 import { CitiesService } from "./cities.service";
 
 // export interface City {

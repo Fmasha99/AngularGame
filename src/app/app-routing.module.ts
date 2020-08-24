@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AboutComponent } from "./about/about.component";
-import { AuthorizeComponent } from "./authorize/authorize.component";
-import { AutorizeGuard } from "./authorize/autorize.guard";
+import { AuthorizeComponent } from "./core/authorize/authorize.component";
+import { AutorizeGuard } from "./core/authorize/autorize.guard";
 import { CoreModule } from "./core/core.module";
 
 const routes: Routes = [

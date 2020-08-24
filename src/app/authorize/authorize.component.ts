@@ -1,5 +1,7 @@
 import { ChangeDetectorRef, Component, } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { StateService } from "../core/state.service";
 
 export interface AuthorizeForm {
 	log: string;
@@ -22,15 +24,17 @@ export class AuthorizeComponent {
 	];
 
 	public constructor(
+		public stateService: StateService,
+		public router: Router,
 		public formBuilder: FormBuilder,
 		public cdr: ChangeDetectorRef) {
 		this.playerForm = this.formBuilder.group({
-			login: [null, [
+			log: [null, [
 				Validators.required,
 				Validators.minLength(5),
 				Validators.pattern("^[a-zA-Z]+$")]
 			],
-			password: [null, [
+			pass: [null, [
 				Validators.required,
 				Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/),
 				Validators.minLength(4),
@@ -41,10 +45,19 @@ export class AuthorizeComponent {
 	} // constructor
 
 	public get login() {
-		return this.playerForm.get("login");
+		return this.playerForm.get("log");
 	}
 
 	public get password() {
-		return this.playerForm.get("password");
+		return this.playerForm.get("pass");
+	}
+
+	public submit(value: AuthorizeForm) {
+		const user = this.arrayOfUsers.find(el => el.log === value.log && el.pass === value.pass);
+		if (user) {
+			this.stateService.user = user.log;
+			this.router.navigate(["game"]);
+		} else {
+		};
 	}
 }

@@ -2,7 +2,7 @@
 
 	<section>
 		<p>Login</p>
-		<input id="login" value="Player" name="login" formControlName="login" type="text" title="Login" minlength="6"
+		<input id="login" value="Player" name="login" formControlName="log" type="text" title="Login" minlength="6"
 			placeholder="Enter your login" autocomplete="off">
 		<div class="error" *ngIf="login.invalid && login.dirty && login.touched">
 			<div *ngIf="login.errors.required">
@@ -14,7 +14,7 @@
 		</div>
 
 		<p>Password</p>
-		<input id="password" value=" " name="password" formControlName="password" type="password" title="password"
+		<input id="password" value=" " name="password" formControlName="pass" type="password" title="password"
 			placeholder="Enter your password">
 		<div class="error" *ngIf="password.invalid && password.dirty && password.touched">
 			<div *ngIf="password.errors.required">
@@ -31,7 +31,7 @@
 				Password is too long.
 			</div>
 		</div>
-		<button type="submit">Open game</button>
+		<button type="submit" (click)="submit(playerForm.value)">Open game</button>
 
 	</section>
 </form>

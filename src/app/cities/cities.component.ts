@@ -36,7 +36,6 @@ export class CitiesComponent implements OnInit, OnDestroy {
 			debounceTime(300),
 			switchMap(symbols => symbols.length > 1 ? this.citiesService.queryCities(symbols) : of([]))
 		).subscribe(cities => {
-			console.log(cities);
 			this.cities = cities;
 			this.cdr.detectChanges();
 		});

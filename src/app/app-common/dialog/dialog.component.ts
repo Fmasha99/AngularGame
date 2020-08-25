@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnDestroy, Output } from "@angular/core";
 
 @Component({
 	selector: "app-dialog",
@@ -8,14 +8,9 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 export class DialogComponent {
 	@Input() public message: string;
-	@Output() public closeMessage = new EventEmitter<void>();
+	@Output() public cancel = new EventEmitter<void>();
 
-	public constructor() {
-		this.message = "This user is not found";
-		this.closeMessage.emit();
-	}
-
-	public close(event) {
-		console.log(event);
+	public close() {
+		this.cancel.emit();
 	}
 }

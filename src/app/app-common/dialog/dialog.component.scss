@@ -52,6 +52,11 @@
 				background-color: white;
 
 				color: #459AFE;
+				outline: none;
+
+				&:active {
+					font-weight: bold;
+				}
 			}
 		}
 

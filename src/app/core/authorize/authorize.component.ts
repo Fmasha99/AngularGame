@@ -1,6 +1,7 @@
-import { ChangeDetectorRef, Component, } from "@angular/core";
+import { ChangeDetectorRef, Component, ComponentFactoryResolver, Injector, ViewContainerRef, } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { DialogComponent } from "src/app/app-common/dialog/dialog.component";
 import { StateService } from "../state.service";
 
 export interface AuthorizeForm {
@@ -27,7 +28,8 @@ export class AuthorizeComponent {
 		public stateService: StateService,
 		public router: Router,
 		public formBuilder: FormBuilder,
-		public cdr: ChangeDetectorRef) {
+		public cdr: ChangeDetectorRef,
+		private injector: Injector) {
 		this.playerForm = this.formBuilder.group({
 			log: [null, [
 				Validators.required,
@@ -58,6 +60,16 @@ export class AuthorizeComponent {
 			this.stateService.user = user.log;
 			this.router.navigate(["game"]);
 		} else {
+			this.playerForm.reset();
+			const vcr = this.injector.get(ViewContainerRef); // найди ближайший vcr(в данном случае - vcr для AuthorizeComponent)
+			const cfr = this.injector.get(ComponentFactoryResolver); // найди cfr
+			const cf = cfr.resolveComponentFactory(DialogComponent); // найди фабрику компонентов для типа DialogComponent
+			const compRef = cf.create(this.injector); // создать экземпляр DialogComponent и его окружение
+			compRef.instance.message = "Incorrect login or password"; // инициализировать свойство
+			compRef.instance.cancel.subscribe(() => {
+				vcr.remove();
+			});
+			vcr.insert(compRef.hostView); // добавить view экземпляра DialogComponent в конец vcr
 		};
 	}
 }

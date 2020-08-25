@@ -1,8 +1,7 @@
-import { ChangeDetectorRef, Component, ComponentFactoryResolver, Injector, ViewContainerRef, } from "@angular/core";
+import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { DialogService } from "src/app/app-common/dialog.service";
-import { DialogComponent } from "src/app/app-common/dialog/dialog.component";
 import { StateService } from "../state.service";
 
 export interface AuthorizeForm {
@@ -15,7 +14,7 @@ export interface AuthorizeForm {
 	templateUrl: "./authorize.component.html",
 	styleUrls: ["./authorize.component.scss"],
 })
-export class AuthorizeComponent {
+export class AuthorizeComponent implements OnInit {
 	public playerForm: FormGroup;
 	public arrayOfUsers: AuthorizeForm[] = [
 		{ log: "Fmasha", pass: "Fmasha99" },
@@ -30,8 +29,10 @@ export class AuthorizeComponent {
 		public router: Router,
 		public formBuilder: FormBuilder,
 		public cdr: ChangeDetectorRef,
-		private injector: Injector,
 		public dialogService: DialogService) {
+	}
+
+	public ngOnInit() {
 		this.playerForm = this.formBuilder.group({
 			log: [null, [
 				Validators.required,
@@ -45,8 +46,7 @@ export class AuthorizeComponent {
 				Validators.maxLength(12)]
 			]
 		})
-
-	} // constructor
+	}
 
 	public get login() {
 		return this.playerForm.get("log");

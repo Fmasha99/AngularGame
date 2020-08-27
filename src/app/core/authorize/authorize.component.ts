@@ -45,7 +45,7 @@ export class AuthorizeComponent implements OnInit {
 				Validators.minLength(4),
 				Validators.maxLength(12)]
 			]
-		})
+		});
 	}
 
 	public get login() {
